@@ -34,10 +34,13 @@ window.addEventListener('keyup', () => {
 
 //When clicking on any of the navigation anchors, it'll inform you that the illuminati is real
 let anchors = document.querySelectorAll('a');
-for (let i = 0; i <anchors.length; i++){
-anchors[i].addEventListener('click', (event) => {
-    alert('The illuminati is real');
-})};
+anchors.forEach(function (eachAnchor) {
+    eachAnchor.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.target.style.fontSize = '30px'
+        alert('The Illuminati is real');
+    });
+});
 
 
 //When using the scroll wheel on your mouse, it'll change the background of the body to a random colors of the rainbow
@@ -59,3 +62,31 @@ window.addEventListener('scroll', () => {
         anchors[i].textContent = phrase[i];
     }
 });
+
+let paragraph = document.querySelectorAll('p');
+let button = document.querySelectorAll('.btn');
+let destination = document.querySelectorAll('.destination');
+
+
+paragraph[paragraph.length-2].addEventListener('click', (event) =>{
+    event.target.style.color = 'red';
+    event.stopPropagation();
+});
+
+
+//made each of the sign up buttons at the bottom have a border color pink and border width of 5px upon click
+destination.forEach(function (eachDestination){
+    eachDestination.addEventListener('click', (event) => {
+        event.target.style.border = '5px solid black';
+        event.target.style.borderColor = 'blue';
+        event.target.style.borderWidth = '5px';
+    });
+});
+button.forEach(function (eachButton) {
+    eachButton.addEventListener('click', (event) => {
+        event.target.style.borderColor = 'pink';
+        event.target.style.borderWidth = '5px';
+        event.stopPropagation();
+    });
+});
+
